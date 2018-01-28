@@ -7,7 +7,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import com.xspeedit.packagingchain.exception.OptimizedAlgorithmException;
-import com.xspeedit.packagingchain.service.OptimizedAlgorithmImpl;
+import com.xspeedit.packagingchain.process.OptimizedAlgorithmImpl;
 
 public class OptimizedAlgorithmTest {
 	
@@ -48,7 +48,7 @@ public class OptimizedAlgorithmTest {
 	}
 	
 	/**
-	 * test permet de valider le cas : Liste des articles avec caractères non numérique
+	 * test permet de valider le cas : Liste des articles avec caractï¿½res non numï¿½rique
 	 * @throws OptimizedAlgorithmException
 	 */
 	@Test
@@ -59,13 +59,13 @@ public class OptimizedAlgorithmTest {
 			algo.optimize(items);
 			fail();
 		} catch (OptimizedAlgorithmException e) {
-			final String expected = "Erreur : la liste des articles contient des caractères non numériques.";
+			final String expected = "Erreur : la liste des articles contient des caractï¿½res non numï¿½riques.";
 			assertEquals(e.getMessage(), expected);
 		}
 	}
 	
 	/**
-	 * test permet de valider le cas : taille article égale 0
+	 * test permet de valider le cas : taille article ï¿½gale 0
 	 * @throws OptimizedAlgorithmException
 	 */
 	@Test
@@ -76,7 +76,7 @@ public class OptimizedAlgorithmTest {
 			algo.optimize(items);
 			fail();
 		} catch (OptimizedAlgorithmException e) {
-			final String expected = "Erreur : Un article ne doit pas être de taille 0.";
+			final String expected = "Erreur : Un article ne doit pas ï¿½tre de taille 0.";
 			assertEquals(e.getMessage(), expected);
 		}
 	}

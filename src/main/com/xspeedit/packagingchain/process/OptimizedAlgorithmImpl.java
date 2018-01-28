@@ -1,4 +1,4 @@
-package com.xspeedit.packagingchain.service;
+package com.xspeedit.packagingchain.process;
 
 import static com.xspeedit.packagingchain.constants.Constants.BOX_CAPACITY;
 import static com.xspeedit.packagingchain.constants.Constants.SEPARATOR;
@@ -14,30 +14,30 @@ import com.xspeedit.packagingchain.model.Box;
 
 /**
  * <p>
- * Le problème énoncé est un problème d’optimisation combinatoire <i>bin
- * packing</i> deux approches de solutions sont possibles pour résoudre ce
- * problème :
+ * Le problï¿½me ï¿½noncï¿½ est un problï¿½me dï¿½optimisation combinatoire <i>bin
+ * packing</i> deux approches de solutions sont possibles pour rï¿½soudre ce
+ * problï¿½me :
  * </p>
  * <br/>
  * <ul>
- * <li>exacte : permettant d’obtenir la solution optimale à chaque fois, mais le
- * temps de calcul peut être long si le problème est compliqué</li>
- * <li>approchée: permettant d’obtenir rapidement une solution approchée, pas
- * nécessairement optimale</li>
+ * <li>exacte : permettant dï¿½obtenir la solution optimale ï¿½ chaque fois, mais le
+ * temps de calcul peut ï¿½tre long si le problï¿½me est compliquï¿½</li>
+ * <li>approchï¿½e: permettant dï¿½obtenir rapidement une solution approchï¿½e, pas
+ * nï¿½cessairement optimale</li>
  * </ul>
  * <br/>
  * <p>
- * Dans mon cas, j'ai choisi la solution approché, cette solution permet
- * d’obtenir un bon compromis entre la qualité de la solution et le temps de
- * calcul. L’algorithme choisi s’appelle :<b>Le Best Fit Deacressing – BFD
- * – </b>(meilleur remplissage par ordre écroissant). Cet algorithme améliore
- * l’algorithme actuel en :
+ * Dans mon cas, j'ai choisi la solution approchï¿½, cette solution permet
+ * dï¿½obtenir un bon compromis entre la qualitï¿½ de la solution et le temps de
+ * calcul. Lï¿½algorithme choisi sï¿½appelle :<b>Le Best Fit Deacressing ï¿½ BFD
+ * ï¿½ </b>(meilleur remplissage par ordre ï¿½croissant). Cet algorithme amï¿½liore
+ * lï¿½algorithme actuel en :
  * </p>
  * <ul>
- * <li>triant tous les articles par ordre décroissant de tailles ;</li>
- * <li>sélectionnant les objets un à un dans l’ordre du tri et en ajoutant
- * l’objet sélectionné dans le sac le plus rempli tel que la contrainte de taille
- * maximalle reste respectée.</li>
+ * <li>triant tous les articles par ordre dï¿½croissant de tailles ;</li>
+ * <li>sï¿½lectionnant les objets un ï¿½ un dans lï¿½ordre du tri et en ajoutant
+ * lï¿½objet sï¿½lectionnï¿½ dans le sac le plus rempli tel que la contrainte de taille
+ * maximalle reste respectï¿½e.</li>
  * </ul>
  * 
  * @author Toufik H
@@ -48,13 +48,13 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	@Override
 	public String optimize(String items) throws OptimizedAlgorithmException {
 
-		// verifier la validité de l'input
+		// verifier la validitï¿½ de l'input
 		checkItems(items);
 
-		// convertir la liste des articles de string à une liste d'entier
+		// convertir la liste des articles de string ï¿½ une liste d'entier
 		List<Integer> itemsArray = string2Ints(items);
 
-		// recuperer les cartons optimisés
+		// recuperer les cartons optimisï¿½s
 		List<Box> box = pack(itemsArray);
 
 		// formatter les articles en String
@@ -64,7 +64,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * si la liste des articles est null, vide, elle contient des zero ou  des caractères non numérique alors on lève une exception
+	 * si la liste des articles est null, vide, elle contient des zero ou  des caractï¿½res non numï¿½rique alors on lï¿½ve une exception
 	 *
 	 * @param items
 	 * @return
@@ -76,10 +76,10 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 			throw new OptimizedAlgorithmException("Erreur : la liste des articles est vide.");
 		}
 		else if(items.contains(ZERO)){
-			throw new OptimizedAlgorithmException("Erreur : Un article ne doit pas être de taille 0.");
+			throw new OptimizedAlgorithmException("Erreur : Un article ne doit pas ï¿½tre de taille 0.");
 		}
 		else if (!isNumeric(items)) {
-			throw new OptimizedAlgorithmException("Erreur : la liste des articles contient des caractères non numériques.");
+			throw new OptimizedAlgorithmException("Erreur : la liste des articles contient des caractï¿½res non numï¿½riques.");
 		}
 	}
 
@@ -110,8 +110,8 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		/*
 		 * Algorithme :
 		 * <ul>
-		 * <li>trier les articles par ordre décroissant de taille</li>
-		 * <li>sélectionner les article un à un dans l’ordre du tri et en ajoutant l’article sélectionné dans le carton le plus rempli
+		 * <li>trier les articles par ordre dï¿½croissant de taille</li>
+		 * <li>sï¿½lectionner les article un ï¿½ un dans lï¿½ordre du tri et en ajoutant lï¿½article sï¿½lectionnï¿½ dans le carton le plus rempli
 		 * </ul>
 		 */
 		
@@ -124,13 +124,13 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		// mettre l'article dans le carton le moyen rempli
 		for (int i = 1; i < itemsSort.size(); i++) {
 			Box box = givenBoxMorePacked(boxList, itemsSort.get(i));
-			// si un carton a été trouvé alors, on ajoute l'article à ce carton
+			// si un carton a ï¿½tï¿½ trouvï¿½ alors, on ajoute l'article ï¿½ ce carton
 			if (null != box) {
 				List<Integer> itemsBox = box.getItems();
 				itemsBox.add(itemsSort.get(i));
 				box.setItems(itemsBox);
 			} else {
-				// si aucun carton n'est éligible de contenir l'article alors on crée un nouveau carton
+				// si aucun carton n'est ï¿½ligible de contenir l'article alors on crï¿½e un nouveau carton
 				Box newBox = createBox(itemsSort.get(i));
 				boxList.add(newBox);
 			}
@@ -190,7 +190,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	 * convertir un string en liste d'entiers
 	 * 
 	 * @param articles
-	 *            : la liste des articles en chaine de caractère
+	 *            : la liste des articles en chaine de caractï¿½re
 	 * @return Liste d'entiers
 	 */
 	private List<Integer> string2Ints(String articles) {
@@ -214,7 +214,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		}
 		int sz = str.length();
 		for (int i = 0; i < sz; i++) {
-			if (Character.isDigit(str.charAt(i)) == false) {
+			if (!Character.isDigit(str.charAt(i))) {
 				return false;
 			}
 		}
