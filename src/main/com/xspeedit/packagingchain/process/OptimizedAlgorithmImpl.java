@@ -58,9 +58,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		List<Box> box = pack(itemsArray);
 
 		// formatter les articles en String
-		String itemString = box2ItemString(box);
-
-		return itemString;
+		return box2ItemString(box);
 	}
 
 	/**
@@ -181,8 +179,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	private Box createBox(Integer size) {
 		List<Integer> itemBox = new ArrayList<>();
 		itemBox.add(size);
-		Box box = new Box(itemBox);
-		return box;
+		return new Box(itemBox);
 	}
 
 	/**

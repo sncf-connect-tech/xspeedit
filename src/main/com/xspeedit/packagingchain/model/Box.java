@@ -4,13 +4,17 @@ import java.util.List;
 
 /**
  * Un caton contien une liste d'articles.
- * La capacité de contenance est de 10.
+ * La capacitï¿½ de contenance est de 10.
  * 
  * @author A370276
  *
  */
 public class Box {
 	
+	/**
+	 * creer un carton avec articles
+	 * @param items
+	 */
 	public Box(List<Integer> items) {
 		super();
 		this.items = items;
