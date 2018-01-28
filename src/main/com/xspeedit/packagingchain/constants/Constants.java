@@ -1,5 +1,10 @@
 package com.xspeedit.packagingchain.constants;
 
+/**
+ * les constantes
+ * @author A370276
+ *
+ */
 public final class Constants {
 	
 	private Constants(){

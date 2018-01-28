@@ -1,7 +1,7 @@
 package com.xspeedit.packagingchain.exception;
 
 /**
- * classe permet de gerer les expcetions remonté par le service OptimizedAlgorithm
+ * classe permet de gerer les expcetions remontÃ©es par le service OptimizedAlgorithm
  * @author A370276
  *
  */

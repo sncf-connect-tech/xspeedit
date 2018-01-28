@@ -73,10 +73,10 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 			throw new OptimizedAlgorithmException("Erreur : la liste des articles est vide.");
 		}
 		else if(items.contains(ZERO)){
-			throw new OptimizedAlgorithmException("Erreur : Un article ne doit pas �tre de taille 0.");
+			throw new OptimizedAlgorithmException("Erreur : Un article ne doit pas être de taille 0.");
 		}
 		else if (!isNumeric(items)) {
-			throw new OptimizedAlgorithmException("Erreur : la liste des articles contient des caract�res non num�riques.");
+			throw new OptimizedAlgorithmException("Erreur : la liste des articles contient des caractères non numériques.");
 		}
 	}
 

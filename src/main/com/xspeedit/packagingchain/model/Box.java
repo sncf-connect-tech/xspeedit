@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Un caton contien une liste d'articles.
- * La capacit� de contenance est de 10.
+ * La capacité de contenance est de 10.
  * 
  * @author A370276
  *
