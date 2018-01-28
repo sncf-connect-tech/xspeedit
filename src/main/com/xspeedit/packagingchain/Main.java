@@ -11,13 +11,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		final OptimizedAlgorithmImpl algo = new OptimizedAlgorithmImpl();
-		System.out.println("Chaine d'article en entrée");
+		System.out.println("Chaine d'article en entree");
 		sc = new Scanner(System.in);
 		String str = sc.nextLine();
 		String outPut = "";
 		try {
 			outPut = algo.optimize(str);
-			System.out.println("chaine d'articles emballés\n"+ outPut);
+			System.out.println("chaine d'articles emballes\n"+ outPut);
 		} catch (OptimizedAlgorithmException e) {
 			System.out.println(e.getMessage());
 		}
