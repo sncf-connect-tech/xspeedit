@@ -14,30 +14,30 @@ import com.xspeedit.packagingchain.model.Box;
 
 /**
  * <p>
- * Le probl�me �nonc� est un probl�me d�optimisation combinatoire <i>bin
- * packing</i> deux approches de solutions sont possibles pour r�soudre ce
- * probl�me :
+ * Nous traitons ici un problème d'optimisation combinatoire <i>bin
+ * packing.</i> Deux approches de solutions sont possibles pour résoudre ce
+ * problème :
  * </p>
  * <br/>
  * <ul>
- * <li>exacte : permettant d�obtenir la solution optimale � chaque fois, mais le
- * temps de calcul peut �tre long si le probl�me est compliqu�</li>
- * <li>approch�e: permettant d�obtenir rapidement une solution approch�e, pas
- * n�cessairement optimale</li>
+ * <li>exacte : permettant d'obtenir la solution optimale à chaque fois, mais le
+ * temps de calcul peut être long si le problème est compliqué</li>
+ * <li>approchée: permettant d'obtenir rapidement une solution approchée, pas
+ * nécessairement optimale</li>
  * </ul>
  * <br/>
  * <p>
- * Dans mon cas, j'ai choisi la solution approch�, cette solution permet
- * d�obtenir un bon compromis entre la qualit� de la solution et le temps de
- * calcul. L�algorithme choisi s�appelle :<b>Le Best Fit Deacressing � BFD
- * � </b>(meilleur remplissage par ordre �croissant). Cet algorithme am�liore
- * l�algorithme actuel en :
+ * Dans mon cas, j'ai choisi la solution approchée, cette solution permet
+ * d'obtenir un bon compromis entre la qualité de la solution et le temps de
+ * calcul. L'algorithme choisi s'appelle :<b>Le Best Fit Deacressing BFD
+ * </b>(meilleur remplissage par ordre décroissant). Cet algorithme améliore
+ * l'algorithme actuel en :
  * </p>
  * <ul>
- * <li>triant tous les articles par ordre d�croissant de tailles ;</li>
- * <li>s�lectionnant les objets un � un dans l�ordre du tri et en ajoutant
- * l�objet s�lectionn� dans le sac le plus rempli tel que la contrainte de taille
- * maximalle reste respect�e.</li>
+ * <li>triant tous les articles par ordre décroissant de tailles ;</li>
+ * <li>sélectionnant les objets un à un dans l'ordre du tri et en ajoutant
+ * l'objet sélectionn� dans le sac le plus rempli tel que la contrainte de taille
+ * maximalle reste respectée.</li>
  * </ul>
  * 
  * @author Toufik H
@@ -48,22 +48,21 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	@Override
 	public String optimize(String items) throws OptimizedAlgorithmException {
 
-		// verifier la validit� de l'input
+		// Vérifier la validité de l'input
 		checkItems(items);
 
-		// convertir la liste des articles de string � une liste d'entier
+		// convertir la liste des articles de String à une liste d'entier
 		List<Integer> itemsArray = string2Ints(items);
 
-		// recuperer les cartons optimis�s
+		// recuperer les cartons optimisés
 		List<Box> box = pack(itemsArray);
 
-		// formatter les articles en String
+		// Construire une le String de sorti
 		return box2ItemString(box);
 	}
 
 	/**
-	 * si la liste des articles est null, vide, elle contient des zero ou  des caract�res non num�rique alors on l�ve une exception
-	 *
+	 * Si la liste des articles est : null, vide ou elle contient des zero ou  des caractères non numérique alors on lève une exception
 	 * @param items
 	 * @return
 	 */
@@ -82,7 +81,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * construire le string de sorti a partir de la liste des cartons
+	 * Construire le string de sorti a partir de la liste des cartons
 	 * @param boxList
 	 * @return string
 	 */
@@ -94,7 +93,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * recuperer les articles en format de string
+	 * Recuperer les articles en format de string
 	 * @param box
 	 * @return string
 	 */
@@ -105,7 +104,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * optimiser les cartons en maximisant le nombre d'articles par carton
+	 * Optimiser les cartons en maximisant le nombre d'articles par carton
 	 * @param items
 	 * @return liste des articles
 	 */
@@ -113,8 +112,8 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		/*
 		 * Algorithme :
 		 * <ul>
-		 * <li>trier les articles par ordre d�croissant de taille</li>
-		 * <li>s�lectionner les article un � un dans l�ordre du tri et en ajoutant l�article s�lectionn� dans le carton le plus rempli
+		 * <li>trier les articles par ordre décroissant de taille</li>
+		 * <li>sélectionner les article un à un dans l'ordre du tri et en ajoutant l'article sélectionné dans le carton le plus rempli
 		 * </ul>
 		 */
 		
@@ -127,13 +126,13 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		// mettre l'article dans le carton le moyen rempli
 		for (int i = 1; i < itemsSort.size(); i++) {
 			Box box = givenBoxMorePacked(boxList, itemsSort.get(i));
-			// si un carton a �t� trouv� alors, on ajoute l'article � ce carton
+			// si un carton a été trouvé alors, on ajoute l'article dans ce carton
 			if (null != box) {
 				List<Integer> itemsBox = box.getItems();
 				itemsBox.add(itemsSort.get(i));
 				box.setItems(itemsBox);
 			} else {
-				// si aucun carton n'est �ligible de contenir l'article alors on cr�e un nouveau carton
+				// si aucun carton n'est éligible pour contenir l'article alors on crée un nouveau carton
 				Box newBox = createBox(itemsSort.get(i));
 				boxList.add(newBox);
 			}
@@ -142,7 +141,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * recuperer le carton le plus rempli
+	 * Recuperer le carton le plus rempli
 	 * @param boxList
 	 * @param itemSize
 	 * @return
@@ -158,7 +157,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * recuperer la taille totale du cartons
+	 * Recuperer la taille totale du cartons
 	 * @param items
 	 * @return taille totale
 	 */
@@ -166,8 +165,9 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		return items.stream().mapToInt(Integer::intValue).sum();
 	}
 
-	/**	 * 
-	 * @param poind
+	/**
+	 * créer une liste de carton avec un premier cartron vide
+	 * @param size
 	 * @return Liste de carton
 	 */
 	private List<Box> createBoxList(Integer size) {
@@ -177,7 +177,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * 
+	 * Creer un carton
 	 * @param size
 	 * @return Carton
 	 */
@@ -188,9 +188,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * 
-	 * convertir un string en liste d'entiers
-	 * 
+	 * Convertir un string en liste d'entiers
 	 * @param articles
 	 *            : la liste des articles en chaine de caract�re
 	 * @return Liste d'entiers
@@ -206,7 +204,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * 
+	 * Verifier si une chaine de caractère est numérique
 	 * @param str
 	 * @return boolean
 	 */
