@@ -82,7 +82,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * 
+	 * construire le string de sorti a partir de la liste des cartons
 	 * @param boxList
 	 * @return string
 	 */
@@ -94,7 +94,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * 
+	 * recuperer les articles en format de string
 	 * @param box
 	 * @return string
 	 */
@@ -104,6 +104,11 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 		return format;
 	}
 
+	/**
+	 * optimiser les cartons en maximisant le nombre d'articles par carton
+	 * @param items
+	 * @return liste des articles
+	 */
 	private List<Box> pack(List<Integer> items) {
 		/*
 		 * Algorithme :
@@ -137,7 +142,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * 
+	 * recuperer le carton le plus rempli
 	 * @param boxList
 	 * @param itemSize
 	 * @return
@@ -153,7 +158,7 @@ public class OptimizedAlgorithmImpl implements OptimizedAlgorithm {
 	}
 
 	/**
-	 * 
+	 * recuperer la taille totale du cartons
 	 * @param items
 	 * @return taille totale
 	 */
