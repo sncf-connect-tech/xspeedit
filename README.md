@@ -1,3 +1,14 @@
+Utilisation
+===========
+
+Compilation et Lancement des JUnit tests
+
+*mvn clean install*
+
+Exécution
+
+*java -jar target/packagingchain.jar*
+
 XspeedIt
 ========
 
