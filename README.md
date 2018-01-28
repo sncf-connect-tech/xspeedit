@@ -1,11 +1,11 @@
 Utilisation
 ===========
 
-Compliation et Lancement des JUnit tests
+Compilation et Lancement des JUnit tests
 
 *mvn clean install*
 
-Execution
+Exécution
 
 *java -jar target/packagingchain.jar*
 
