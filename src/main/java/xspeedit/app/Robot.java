@@ -30,7 +30,7 @@ public class Robot {
 			System.out.print("-> ");
 			str = sc.nextLine();
 		}
-		while(!str.matches("[1-9]*"));
+		while(!str.matches("[1-9]+"));
 		sc.close();
 		System.out.println("Chaîne d'articles en entrée : "+ str);
 		List<Integer> articles = new ArrayList<Integer>();
