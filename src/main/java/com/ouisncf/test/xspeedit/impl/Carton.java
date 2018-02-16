@@ -14,7 +14,7 @@ import com.ouisncf.test.xspeedit.util.TriUtil;
  * @author crabiller
  *
  */
-public abstract class Carton implements Cloneable {
+public abstract class Carton  {
 
   // Taille par defaut des cartons
   protected int taille = Constant.TAILLE_CARTON_DEFAUT;
