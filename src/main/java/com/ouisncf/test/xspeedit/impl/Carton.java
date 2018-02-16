@@ -22,8 +22,8 @@ public abstract class Carton  {
   // Liste d'article que contient le carton
   protected List<Article> contenu = new ArrayList<Article>();
 
-  // Place restante dans le carton
-  protected int placeLibre = Constant.TAILLE_CARTON_DEFAUT;
+  // PlaceS restanteS dans le carton
+  protected int placesLibre = Constant.TAILLE_CARTON_DEFAUT;
 
   /**
    * Constructeur par défaut
@@ -42,7 +42,7 @@ public abstract class Carton  {
   public Carton(int taille, List<Article> contenu) {
     this.contenu = contenu;
     this.taille = taille;
-    this.placeLibre = taille;
+    this.placesLibre = taille;
   }
 
   /**
@@ -61,7 +61,7 @@ public abstract class Carton  {
    */
 
   public int getPlaceLibre() {
-    return placeLibre;
+    return placesLibre;
   }
 
   /**
@@ -71,7 +71,7 @@ public abstract class Carton  {
    */
   public void addArticle(Article contenu) {
     this.contenu.add(contenu);
-    placeLibre = placeLibre - contenu.getTaille();
+    placesLibre = placesLibre - contenu.getTaille();
   }
 
   /**
