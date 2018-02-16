@@ -25,8 +25,7 @@ public final class Constant {
 	public static final int TEMPS_INITIALISATION_ROBOT_RECENT = 1000;
 	public static final int TEMPS_INITIALISATION_ROBOT_ANCIEN = 3000 ;
 	
-	public static final String MESSAGE_INIT_ROBOT = "Initialisation du robot pour le tri ... Veuillez patienter"; 
-	public static final String UNITE_TEMPS = " ms"; 
+
 	
 
 
