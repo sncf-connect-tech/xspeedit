@@ -30,6 +30,7 @@ public class Entrepot {
 		//lecture de la chaine des tailles d'articles
 		@SuppressWarnings("resource")
 		String lArticlesString = new Scanner(System.in).nextLine();
+		//si aucun article n'a été saisi, erreur
 		if(lArticlesString.isEmpty()) {
 			throw new NoArticleFoundException();
 		}
@@ -37,6 +38,7 @@ public class Entrepot {
 		List<IArticle> articles = new ArrayList<>();
 		for(char tailleArticle : lArticlesString.toCharArray()) {
 			int articleSize = Integer.parseInt(""+tailleArticle);
+			//la taille d'un article ne peut pas être 0
 			if(articleSize==0) {
 				throw new ArticleSizeNotDefined();
 			}
