@@ -46,7 +46,7 @@ public class Box {
 		      for(Item item : this.getItems()){
 		    	  description += item.getSize() + "/";
 		      }
-		      return description;
+		      return description + "|";
 		    }  
 		    return description;
 		}
