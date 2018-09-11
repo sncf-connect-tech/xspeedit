@@ -1,8 +1,6 @@
 package com.anthony.app.xspeedit.Util;
 
 import org.apache.commons.lang3.StringUtils;
-
-import com.anthony.app.xspeedit.constant.Constant;
 import com.anthony.app.xspeedit.exception.InvalidEntryException;
 
 /**

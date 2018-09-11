@@ -46,19 +46,24 @@ public class FillingUtils {
 				if(isEnoughtPlace(item,actualBoxToFill)) {
 					actualBoxToFill.getItems().add(item);
 					if(!iterator.hasNext()) {
-						allbox.add(actualBoxToFill);
+						addBoxToChainBox(allbox,actualBoxToFill);
 					}
 				}else {
 					// Sinon on ajoute la boite remplie à la liste des boites
-					// On vide la boite et on y rajoute l'objet		
-					allbox.add(actualBoxToFill);
+					// On vide la boite et on y rajoute l'objet	
+					
+					addBoxToChainBox(allbox,actualBoxToFill);
 					actualBoxToFill = new Box();
 					actualBoxToFill.getItems().add(item);
+					if(!iterator.hasNext()) {
+						addBoxToChainBox(allbox,actualBoxToFill);
+					}
 				} 
 			}	
 		}	
 		return allbox;
 	}
+	
 	
 	
 	
@@ -125,6 +130,20 @@ public class FillingUtils {
 		.filter(box -> box.getRemainingPlace() - item.getSize() > 0)
 		.max(comparator)
 		.orElse(null);
+	}
+	
+	/**<pre>
+	 * 
+	 * Ajoute la boite à la liste des boites et l'affiche dans la console.
+	 * 
+	 * </pre>
+	 * @param allbox
+	 * @param item
+	 * @return
+	 */
+	private static void addBoxToChainBox(List<Box> allBox, Box box) {
+		allBox.add(box);
+		System.out.print(box);
 	}
 	
 }

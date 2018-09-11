@@ -15,11 +15,11 @@ public class NewRobot extends Robot{
 	 */
 	@Override
 	 public List<Box> fillBox(List<Item> items) {
-		return FillingUtils.basicFilling(items);
+		return FillingUtils.optimisedFilling(items);
 	}
 		
 	@Override
 	 public String toString() {
-	   return "Robot de nouvelle génération, pouvant optimiser le nombre d'objets par cartons";
+	   return "robot " + this.reference + " de nouvelle génération";
 	 }
 }

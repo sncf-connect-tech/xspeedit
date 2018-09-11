@@ -10,7 +10,7 @@ public class OldRobot extends Robot {
 		
 	@Override
 	 public String toString() {
-	   return "Robot ancienne génération qui n'optimise pas les cartons";
+	   return "robot " + this.reference + " de nouvelle génération";
 	 }
 	
 }
