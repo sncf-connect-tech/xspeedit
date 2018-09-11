@@ -1,3 +1,14 @@
+
+Application test pour OUI.SNCF - Anthony ARCHAMBEAU JAVA 1.8
+
+Pour lancer : 
+
+Dans Eclipse => clique droit sur App.java => Run as => Java Application
+Sinon lancer en ligne de commande 
+java - jar {SNAPSHOT-XPEED}
+
+Enoncé : 
+
 XspeedIt
 ========
 
