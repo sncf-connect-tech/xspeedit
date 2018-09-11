@@ -2,6 +2,7 @@ package com.anthony.app.xspeedit.Util;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.anthony.app.xspeedit.constant.Constant;
 import com.anthony.app.xspeedit.exception.InvalidEntryException;
 
 /**
@@ -12,7 +13,7 @@ import com.anthony.app.xspeedit.exception.InvalidEntryException;
 public class ControlUtils {
 
 	 /**
-     * Contrôle si l'entrée est OK 
+     * Retourne vrai si l'entrée est un chiffre entre 1 et 9, sinon genère une exeption
      * @param entry
      * @return
      */
@@ -25,7 +26,7 @@ public class ControlUtils {
     }
  
     /**
-     * Contrôle si l'utilisateur souhaites arrêter de saisir
+     * Retourne vrai si l'utilisateur souhaite arrêter de saisir
      * (chaine vide)
      * @param entry
      * @return

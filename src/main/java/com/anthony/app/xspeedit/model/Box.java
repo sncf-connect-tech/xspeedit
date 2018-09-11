@@ -31,24 +31,43 @@ public class Box {
 		this.items = items;
 	}
 
-	
+	/**
+	 * Retourne la place restante
+	 * @return
+	 */
 	public int getRemainingPlace() {
 		int remainingPlace = this.maxItem;
 		for(Item item : this.items) {
-			remainingPlace = remainingPlace - item.getSize();
+			remainingPlace =  remainingPlace - item.getSize();
 		}
 		return remainingPlace;	
 	}
 	
-	  public String toString(){
-		    String description = "" ;
-		    if(CollectionUtils.isNotEmpty(this.getItems())){
-		      for(Item item : this.getItems()){
-		    	  description += item.getSize() + "/";
-		      }
-		      return description + "|";
-		    }  
-		    return description;
+	
+	/**
+	 * Retourne la place remplie dans la boite
+	 * @return
+	 */
+	public int getfilledPlace() {
+		int filledPlace = 0;
+		for(Item item : this.items) {
+			filledPlace += item.getSize();
 		}
+		return filledPlace;	
+	}
+	
+	public String toString(){
+		String description = "" ;
+		if(CollectionUtils.isNotEmpty(this.getItems())){
+			for(Item item : this.getItems()){
+				description = description +  item.getSize();
+			}
+			return description + "/";
+			
+		}  
+		return description;
+	}
+	
+	
 	
 }
