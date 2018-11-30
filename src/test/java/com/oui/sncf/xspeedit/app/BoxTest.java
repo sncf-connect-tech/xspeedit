@@ -21,6 +21,7 @@ public class BoxTest {
         softly.assertThat(box).isNotNull();
         softly.assertThat(box.getParcels().size()).isOne();
         softly.assertThat(box.getParcels()).isEqualTo(PARCEL_OF_SIZE_TWO);
+        softly.assertAll();
     }
 
     @Test
