@@ -3,6 +3,7 @@ package com.oui.sncf.xspeedit.app;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Test;
 
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.Assert.*;
@@ -16,11 +17,10 @@ public class BoxTest {
     public void ofParcel_should_return_box_containing_only_given_parcel() {
 
         Box box = Box.ofParcel(PARCEL_OF_SIZE_TWO);
-
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(box).isNotNull();
         softly.assertThat(box.getParcels().size()).isOne();
-        softly.assertThat(box.getParcels()).isEqualTo(PARCEL_OF_SIZE_TWO);
+        softly.assertThat(box.getParcels()).isEqualTo(singletonList(PARCEL_OF_SIZE_TWO));
         softly.assertAll();
     }
 
